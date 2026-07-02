@@ -63,6 +63,24 @@ impl FSRSItem {
         self.reviews.last().unwrap()
     }
 
+    /// Count long-term reviews.
+    /// 
+    /// # Notes
+    /// The long-term reviews mean the number of reviews with `delta_t` > 0.
+    /// 
+    /// # Examples
+    /// ```
+    /// use fsrs::{FSRSReview, FSRSItem};
+    /// let items = FSRSItem {
+    ///     reviews: vec![
+    ///         FSRSReview { rating: 0, delta_t: 0 },
+    ///         FSRSReview { rating: 1, delta_t: 1 },
+    ///         FSRSReview { rating: 2, delta_t: 2 },
+    ///         FSRSReview { rating: 3, delta_t: 0 },
+    ///     ],
+    /// };
+    /// assert_eq!(items.long_term_review_cnt(), 2);
+    /// ```
     pub fn long_term_review_cnt(&self) -> usize {
         self.reviews
             .iter()
