@@ -329,7 +329,7 @@ impl FSRS {
     ///
     /// # Examples
     /// ```
-    /// use fsrs::{FSRS, MemoryState};
+    /// use fsrs::{FSRS, MemoryState, ItemState, NextStates};
     ///
     /// let fsrs = FSRS::default();
     /// let desired_retention = 0.9;
@@ -337,7 +337,15 @@ impl FSRS {
     /// let elapsed_days = 0;
     ///
     /// let next_states = fsrs.next_states(previous_state, desired_retention, elapsed_days).unwrap();
-    /// let review = next_states.good;
+    /// assert_eq!(
+    ///     next_states,
+    ///     NextStates {
+    ///         again: ItemState { memory: MemoryState { stability: 0.212, difficulty: 6.4133 }, interval: 0.212 },
+    ///         hard: ItemState { memory: MemoryState { stability: 1.2931, difficulty: 5.1121707 }, interval: 1.2931 },
+    ///         good: ItemState { memory: MemoryState { stability: 2.3065, difficulty: 2.118104 }, interval: 2.3065 },
+    ///         easy: ItemState { memory: MemoryState { stability: 8.2956, difficulty: 1.0 }, interval: 8.2956 }
+    ///     }
+    /// );
     /// ```
     pub fn next_states(
         &self,

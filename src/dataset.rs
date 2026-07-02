@@ -64,10 +64,10 @@ impl FSRSItem {
     }
 
     /// Count long-term reviews.
-    /// 
+    ///
     /// # Notes
     /// The long-term reviews mean the number of reviews with `delta_t` > 0.
-    /// 
+    ///
     /// # Examples
     /// ```
     /// use fsrs::{FSRSReview, FSRSItem};
